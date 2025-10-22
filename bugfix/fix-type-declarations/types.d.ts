@@ -32,6 +32,9 @@ export interface GraphApiSchema {
     queries?: Record<string, GraphApiOperation>;
     mutations?: Record<string, GraphApiOperation>;
     subscriptions?: Record<string, GraphApiOperation>;
+    queryTypeName?: string;
+    mutationTypeName?: string;
+    subscriptionTypeName?: string;
     directives?: GraphApiDirectives;
     components?: GraphApiComponents;
 }
