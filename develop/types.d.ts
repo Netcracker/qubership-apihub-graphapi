@@ -18,7 +18,7 @@ export interface GraphApiUsage {
     nullable?: boolean;
     default?: any;
 }
-export type GraphApiAnyDefinition = GraphApiScalarDefinition | GraphApiEnumDefinition | GraphApiObjectDefinition<GraphApiObjectKind> | GraphApiInputObjectDefinition | GraphApiUnionDefinition;
+export type GraphApiAnyDefinition = GraphApiScalarDefinition | GraphApiEnumDefinition | GraphApiObjectDefinition<GraphApiObjectKind> | GraphApiInputObjectDefinition | GraphApiUnionDefinition | GraphApiListDefinition;
 export type GraphApiInputDefinition = GraphApiScalarDefinition | GraphApiEnumDefinition | GraphApiInputObjectDefinition;
 export interface GraphApiAnyUsage extends GraphApiUsage {
     typeDef: GraphApiRef | GraphApiAnyDefinition;
@@ -32,12 +32,17 @@ export interface GraphApiSchema {
     queries?: Record<string, GraphApiOperation>;
     mutations?: Record<string, GraphApiOperation>;
     subscriptions?: Record<string, GraphApiOperation>;
+    queryTypeName?: string;
+    mutationTypeName?: string;
+    subscriptionTypeName?: string;
     directives?: GraphApiDirectives;
     components?: GraphApiComponents;
 }
-export interface GraphApiOperation extends GraphApiDefinition {
+export interface GraphApiOperation {
     args?: GraphApiArgs;
     output: GraphApiAnyUsage;
+    description?: string;
+    directives?: GraphApiDirectives;
 }
 export interface GraphApiComponents {
     scalars?: Record<string, GraphApiScalarDefinition>;

@@ -37,4 +37,7 @@ export declare const BUILT_IN_DIRECTIVE_ONE_OF = "oneOf";
 export declare const BUILT_IN_DIRECTIVES: readonly ["include", "skip", "specifiedBy", "deprecated", "oneOf"];
 export declare const BUILT_IN_DIRECTIVES_SET: Set<string>;
 export declare const GRAPH_API_DIRECTIVE_DEPRECATED_DEFAULT_REASON = "No longer supported";
+export declare const GRAPH_QL_QUERY_TYPE_NAME_DEFAULT = "Query";
+export declare const GRAPH_QL_MUTATION_TYPE_NAME_DEFAULT = "Mutation";
+export declare const GRAPH_QL_SUBSCRIPTION_TYPE_NAME_DEFAULT = "Subscription";
 //# sourceMappingURL=constants.d.ts.map
