@@ -56,7 +56,7 @@ export const GraphApiPlayground: FC<GraphApiPlaygroundProps> = ({
         if (graphApiSchema) {
           switch (resultFormat) {
             case RESULT_TYPE_YAML:
-              result = stringify(graphApiSchema, { aliasDuplicateObjects: false })
+              result = stringify(graphApiSchema, { aliasDuplicateObjects: false, lineWidth: 0, singleQuote: true })
               break
             case RESULT_TYPE_JSON:
               result = JSON.stringify(graphApiSchema, null, 2)
