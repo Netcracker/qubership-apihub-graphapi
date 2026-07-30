@@ -27,13 +27,13 @@ type MyCustomMutationType {
 type MyCustomSubscriptionType {
   userUpdated: String
 }`
-      
+
       const graphApi = buildGraphApi(original, mode)
       const actual = printGraphApi(graphApi)
-      
+
       // The printed GraphQL should be valid and parseable
       expect(() => buildGraphApi(actual)).not.toThrow()
-      
+
       // Verify that the custom type names are preserved
       expect(actual).toContain('schema {')
       expect(actual).toContain('query: MyCustomQueryType')
@@ -42,12 +42,12 @@ type MyCustomSubscriptionType {
       expect(actual).toContain('type MyCustomQueryType')
       expect(actual).toContain('type MyCustomMutationType')
       expect(actual).toContain('type MyCustomSubscriptionType')
-      
+
       // Should NOT contain the standard names when custom names are used
       expect(actual).not.toContain('type Query')
       expect(actual).not.toContain('type Mutation')
       expect(actual).not.toContain('type Subscription')
-      
+
       // Verify the GraphApi object contains the correct root type names
       expect(graphApi.queryTypeName).toBe('MyCustomQueryType')
       expect(graphApi.mutationTypeName).toBe('MyCustomMutationType')
@@ -62,15 +62,15 @@ type MyCustomSubscriptionType {
 type Mutation {
   createUser(name: String!): String
 }`
-      
+
       const graphApi = buildGraphApi(original, mode)
       const actual = printGraphApi(graphApi)
-      
+
       // Should use standard names and not generate schema definition
       expect(actual).toContain('type Query')
       expect(actual).toContain('type Mutation')
       expect(actual).not.toContain('schema {')
-      
+
       // Verify the GraphApi object contains the correct standard root type names
       expect(graphApi.queryTypeName).toBe('Query')
       expect(graphApi.mutationTypeName).toBe('Mutation')
@@ -85,11 +85,11 @@ type Mutation {
         type Query {
           hello: String
         }
-        
+
         type Mutation {
           doIt: Boolean
         }
-        
+
         type Subscription {
           event: String
         }
@@ -145,11 +145,11 @@ type Mutation {
         schema {
           query: Query
         }
-        
+
         type Query {
           ${queryField}
         }
-        
+
         ${typeDef}
         `
 
@@ -172,6 +172,48 @@ type Mutation {
       }
     )
 
+    // Regression for qubership-apihub#633: a business object named Subscription must not be promoted
+    // to the subscription root when the stored SDL is re-parsed without an explicit schema block.
+    it('should round-trip Subscription business object without promoting it to subscription root', () => {
+      const original = `
+        schema {
+          query: Query
+        }
+
+        type Query {
+          subscriptions: [Subscription!]!
+        }
+
+        interface Node {
+          id: ID!
+        }
+
+        type Subscription implements Node {
+          id: ID!
+          name: String
+        }
+      `
+
+      const graphApi = buildGraphApi(original, mode)
+
+      expect(graphApi.subscriptions).toBeUndefined()
+      expect(graphApi.components?.objects).toHaveProperty('Subscription')
+      expect(graphApi.components?.objects?.Subscription?.type?.interfaces).toEqual([
+        { $ref: '#/components/interfaces/Node' },
+      ])
+
+      const actual = printGraphApi(graphApi)
+
+      expect(actual).toContain('schema {')
+      expect(actual).toContain('query: Query')
+      expect(actual).not.toContain('subscription:')
+      expect(actual).toContain('type Subscription implements Node')
+      expect(actual).toContain('interface Node')
+
+      const reparsed = buildGraphApi(actual, mode)
+      expect(graphApi).toEqual(reparsed)
+    })
+
     it('should handle only query type with custom name', () => {
       const original = `schema {
   query: MyOnlyQueryType
@@ -180,21 +222,21 @@ type Mutation {
 type MyOnlyQueryType {
   hello: String
 }`
-      
+
       const graphApi = buildGraphApi(original, mode)
       const actual = printGraphApi(graphApi)
-      
+
       // Should generate schema definition for custom query type only
       expect(actual).toContain('schema {')
       expect(actual).toContain('query: MyOnlyQueryType')
       expect(actual).not.toContain('mutation:')
       expect(actual).not.toContain('subscription:')
       expect(actual).toContain('type MyOnlyQueryType')
-      
+
       // Verify the GraphApi object
       expect(graphApi.queryTypeName).toBe('MyOnlyQueryType')
       expect(graphApi.mutationTypeName).toBeUndefined()
       expect(graphApi.subscriptionTypeName).toBeUndefined()
     })
-  })  
+  })
 })
