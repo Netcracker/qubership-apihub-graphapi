@@ -40,4 +40,5 @@ export declare const GRAPH_API_DIRECTIVE_DEPRECATED_DEFAULT_REASON = "No longer 
 export declare const GRAPH_QL_QUERY_TYPE_NAME_DEFAULT = "Query";
 export declare const GRAPH_QL_MUTATION_TYPE_NAME_DEFAULT = "Mutation";
 export declare const GRAPH_QL_SUBSCRIPTION_TYPE_NAME_DEFAULT = "Subscription";
+export declare const GRAPH_QL_DEFAULT_ROOT_TYPE_NAMES: readonly ["Query", "Mutation", "Subscription"];
 //# sourceMappingURL=constants.d.ts.map
