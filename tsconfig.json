@@ -44,8 +44,7 @@
     // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
     // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
     /* Module Resolution Options */
-    "moduleResolution": "node",
-    "ignoreDeprecations": "6.0", /* TS 6 reports moduleResolution:node as deprecated (TS5107); it still functions through 6.x. Changing resolution strategy belongs with the TS 7 migration. */
+    "moduleResolution": "bundler", /* Bundled by vite, so 'bundler' is what actually resolves this. Was 'node' + ignoreDeprecations, deferred to the TS 7 migration; TS 7 removed node10 outright (TS5108), so the move is a prerequisite for it. See §12 item 1.10. */
     "types": [ /* TS 6 defaults 'types' to [] rather than every package under typeRoots. */
       "node",
       "jest",
