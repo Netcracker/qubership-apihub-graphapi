@@ -1,5 +1,5 @@
-import { GraphApiSchema, GraphApiObjectDefinition, GraphApiObjectKind, GraphApiComponents } from "../types";
-import { Maybe } from "./declarations";
+import { GraphApiSchema, GraphApiObjectDefinition, GraphApiObjectKind, GraphApiComponents } from '../types';
+import { Maybe } from './declarations';
 export declare function printSchemaDefinition(schema: GraphApiSchema): Maybe<string>;
 export declare function printOperations(name: string, operations?: GraphApiObjectDefinition<GraphApiObjectKind>['type']['methods'], components?: GraphApiComponents): string;
 export declare function printTypeDefinitions(components?: GraphApiComponents): string[];

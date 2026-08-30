@@ -1,6 +1,5 @@
-import { GraphApiAnyDefinition, GraphApiComponentsKind, GraphApiListDefinition, GraphApiRef } from "../types";
-import { Maybe } from "./declarations";
-import { TypePrinter } from "./declarations";
+import { GraphApiAnyDefinition, GraphApiComponentsKind, GraphApiListDefinition, GraphApiRef } from '../types';
+import { Maybe, TypePrinter } from './declarations';
 export declare function typePrinter(componentKind: GraphApiComponentsKind): Maybe<TypePrinter>;
 export declare function typeName(entity: GraphApiRef | GraphApiAnyDefinition): string | undefined;
 export declare function printBlock(items: ReadonlyArray<string>): string;

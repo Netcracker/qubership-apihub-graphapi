@@ -1,4 +1,4 @@
-import { GraphApiArgs, GraphApiArgument, GraphApiComponents, GraphApiDirective, GraphApiInputObjectDefinition, GraphApiObjectDefinition, GraphApiObjectKind, GraphApiRef } from "../types";
+import { GraphApiArgs, GraphApiArgument, GraphApiComponents, GraphApiDirective, GraphApiInputObjectDefinition, GraphApiObjectDefinition, GraphApiObjectKind, GraphApiRef } from '../types';
 export declare function printImplementedInterfaces(interfaces?: GraphApiRef[]): string;
 export declare function printValueLiteral(value: unknown): string;
 export declare function printFields(object: GraphApiObjectDefinition<GraphApiObjectKind>, components?: GraphApiComponents): string;

@@ -1,4 +1,4 @@
-import { GraphApiComponents } from "../types";
+import { GraphApiComponents } from '../types';
 export declare const BUILT_IN_SCALARS: readonly ["Int", "Float", "Boolean", "String", "ID"];
 export declare const NAMED_TYPE_COMPONENT_KINDS: readonly ["scalars", "objects", "interfaces", "unions", "enums", "inputObjects"];
 export declare const GRAPH_API_COMPONENT_KINDS: readonly ["directives", "scalars", "objects", "interfaces", "unions", "enums", "inputObjects"];
