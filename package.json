@@ -19,7 +19,6 @@
   },
   "scripts": {
     "lint:check": "eslint -c .eslintrc.json . --ext .js,.cjs,.ts,.json --ignore-path .gitignore --max-warnings 0 --report-unused-disable-directives",
-    "postinstall": "node ./bin/monky-patchng-storybook.mjs",
     "storybook": "storybook dev -p 6006",
     "build:showcase": "storybook build -o dist-showcase",
     "lint:fix": "npm run lint:check -- --fix",
