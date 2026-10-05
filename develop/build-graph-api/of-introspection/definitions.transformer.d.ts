@@ -1,5 +1,5 @@
-import type { IntrospectionDirective, IntrospectionEnumType, IntrospectionInputObjectType, IntrospectionInterfaceType, IntrospectionObjectType, IntrospectionScalarType, IntrospectionUnionType } from "graphql";
-import type { GraphApiDirectiveDefinition, GraphApiEnumDefinition, GraphApiInputObjectDefinition, GraphApiObjectDefinition, GraphApiObjectKind, GraphApiScalarDefinition, GraphApiUnionDefinition } from "../../types";
+import { IntrospectionDirective, IntrospectionEnumType, IntrospectionInputObjectType, IntrospectionInterfaceType, IntrospectionObjectType, IntrospectionScalarType, IntrospectionUnionType } from 'graphql';
+import { GraphApiDirectiveDefinition, GraphApiEnumDefinition, GraphApiInputObjectDefinition, GraphApiObjectDefinition, GraphApiObjectKind, GraphApiScalarDefinition, GraphApiUnionDefinition } from '../../types';
 export declare function transformScalarType2Definition(scalarType: IntrospectionScalarType): GraphApiScalarDefinition;
 export declare function transformObjectType2Definition(objectType: IntrospectionObjectType | IntrospectionInterfaceType): GraphApiObjectDefinition<GraphApiObjectKind>;
 export declare function transformUnionType2Definition(unionType: IntrospectionUnionType): GraphApiUnionDefinition;

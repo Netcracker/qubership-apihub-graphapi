@@ -1,5 +1,5 @@
-import { DirectiveLocation } from "graphql";
-import { GraphApiNamedDefinition } from "./types";
+import { DirectiveLocation } from 'graphql';
+import { GraphApiNamedDefinition } from './types';
 export declare const GRAPH_API_NODE_KIND_ID = "ID";
 export declare const GRAPH_API_NODE_KIND_STRING = "string";
 export declare const GRAPH_API_NODE_KIND_INTEGER = "integer";

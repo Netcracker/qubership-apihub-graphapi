@@ -1,5 +1,5 @@
-import { GRAPH_API_NODE_KIND_OBJECT, GRAPH_API_NODE_KIND_INTERFACE } from "../constants";
-import { GraphApiComponents, GraphApiDirectiveDefinition, GraphApiScalarDefinition, GraphApiObjectDefinition, GraphApiUnionDefinition, GraphApiEnumDefinition, GraphApiInputObjectDefinition } from "../types";
+import { GRAPH_API_NODE_KIND_OBJECT, GRAPH_API_NODE_KIND_INTERFACE } from '../constants';
+import { GraphApiComponents, GraphApiDirectiveDefinition, GraphApiScalarDefinition, GraphApiObjectDefinition, GraphApiUnionDefinition, GraphApiEnumDefinition, GraphApiInputObjectDefinition } from '../types';
 export declare function printDirectiveDefinition(name: string, directive: GraphApiDirectiveDefinition, components?: GraphApiComponents): string;
 export declare function printScalar(name: string, type: GraphApiScalarDefinition): string;
 export declare function printObject(name: string, type: GraphApiObjectDefinition<typeof GRAPH_API_NODE_KIND_OBJECT>, components?: GraphApiComponents): string;

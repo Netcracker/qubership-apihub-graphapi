@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { GraphApiPlayground, ModeType, ResultType } from './GraphAPIPlayground';
 declare const meta: Meta<typeof GraphApiPlayground>;
 export default meta;
